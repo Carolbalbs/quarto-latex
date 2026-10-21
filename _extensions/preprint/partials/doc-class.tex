@@ -1,7 +1,10 @@
 %% Partial: classe do documento (template de preprint, classe `externalized`)
 %% Opcoes passadas ANTES de \documentclass para evitar "option clash" com os
 %% pacotes que a classe e o template do Quarto carregam em comum.
-\PassOptionsToPackage{bidi=default,$if(babel-lang)$main=$babel-lang$,$endif$english}{babel}
+%% A classe carrega babel por conta propria; pre-passamos aqui todas as
+%% opcoes que o preambulo do Quarto usa, senao o segundo \usepackage
+%% dispara "Option clash for package babel".
+\PassOptionsToPackage{bidi=default,shorthands=off,$if(babel-lang)$main=$babel-lang$,$endif$english}{babel}
 \PassOptionsToPackage{most,skins,breakable}{tcolorbox}
 \PassOptionsToPackage{dvipsnames,svgnames,table}{xcolor}
 \PassOptionsToPackage{unicode}{hyperref}
