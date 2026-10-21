@@ -1,0 +1,8 @@
+---
+# PDF no template WebMedia (duas colunas, estilo ACM sigconf).
+# Metadados em _metadata.yml; conteúdo em sections/.
+# Renderize com: quarto render artigo/webmedia.qmd
+format: webmedia-pdf
+---
+
+{{< include _corpo.qmd >}}

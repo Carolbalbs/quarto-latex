@@ -1,0 +1,14 @@
+# Trabalhos relacionados {#sec-relacionados}
+
+Compare aqui seu trabalho com a literatura. Referências múltiplas também
+funcionam [@knuth1984; @bernerslee1994], assim como citações no texto, como em
+@knuth1984, que discute a ideia de programação literária.
+
+## Subseção de exemplo
+
+Listas, ênfase e código inline (`quarto render`) são renderizados nos dois
+templates sem nenhum ajuste:
+
+- primeiro item;
+- segundo item;
+- terceiro item.

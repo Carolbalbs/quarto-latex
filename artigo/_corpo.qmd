@@ -1,0 +1,18 @@
+<!-- Corpo do artigo: incluido por index.qmd, webmedia.qmd e preprint.qmd.
+     Para criar uma seção nova, adicione o arquivo em sections/ e um
+     {{{< include >}}} aqui. -->
+
+{{< include sections/01-introducao.qmd >}}
+
+{{< include sections/02-trabalhos-relacionados.qmd >}}
+
+{{< include sections/03-metodologia.qmd >}}
+
+{{< include sections/04-resultados.qmd >}}
+
+{{< include sections/05-conclusao.qmd >}}
+
+# Referências {.unnumbered}
+
+::: {#refs}
+:::

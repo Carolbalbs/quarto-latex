@@ -1,0 +1,26 @@
+# Resultados {#sec-resultados}
+
+Figuras recebem rótulo e são referenciadas com `@fig-`. A @fig-exemplo mostra
+um gráfico de exemplo.
+
+![Legenda da figura de exemplo.](figuras/exemplo-grafico.png){#fig-exemplo width=85%}
+
+Tabelas em Markdown funcionam nos dois templates e no HTML. A @tbl-exemplo
+resume os valores obtidos.
+
+| Configuração | Métrica A | Métrica B |
+|:-------------|----------:|----------:|
+| Baseline     |      0,62 |      0,58 |
+| Proposta     |      0,81 |      0,77 |
+
+: Resultados comparativos. {#tbl-exemplo}
+
+Quando um formato precisar de conteúdo exclusivo, use blocos condicionais:
+
+::: {.content-visible when-format="pdf"}
+Este parágrafo aparece **somente** nas saídas em PDF (ambos os templates).
+:::
+
+::: {.content-visible when-format="html"}
+Este parágrafo aparece **somente** na versão HTML do site.
+:::

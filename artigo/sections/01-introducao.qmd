@@ -1,0 +1,10 @@
+# Introdução {#sec-introducao}
+
+Escreva aqui a motivação do trabalho, o problema de pesquisa e a contribuição
+do artigo. Citações usam a sintaxe do Pandoc e funcionam igual nos três
+formatos de saída: um trabalho seminal sobre a web [@bernerslee1994] e outro
+sobre escrita reprodutível [@knuth1984].
+
+As seções deste artigo vivem em arquivos separados dentro de `sections/` e são
+reunidas por `_corpo.qmd`. Para criar uma nova seção, basta adicionar o arquivo
+e um `{{{< include >}}}` correspondente.

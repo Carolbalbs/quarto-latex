@@ -1,0 +1,32 @@
+---
+title: "Artigo Científico em Quarto"
+subtitle: "Escreva uma vez em Markdown; publique em LaTeX e na web"
+---
+
+Este repositório é um esqueleto para escrever artigos científicos em
+[Quarto](https://quarto.org) e convertê-los para **dois templates LaTeX
+diferentes**, sem duplicar o conteúdo.
+
+## Downloads
+
+| Formato | Arquivo | Descrição |
+|:--|:--|:--|
+| WebMedia | [webmedia.pdf](artigo/webmedia.pdf) | Duas colunas, estilo ACM `sigconf`, usado nos anais do WebMedia |
+| Preprint | [preprint.pdf](artigo/preprint.pdf) | Coluna única, estilo de preprint do arXiv |
+| Web | [versão HTML](artigo/index.qmd) | Mesmo conteúdo, navegável no navegador |
+
+## Como usar
+
+```bash
+git clone <seu-fork>
+cd quarto-latex
+
+quarto render                        # site HTML + os dois PDFs
+quarto render artigo/webmedia.qmd    # só o PDF no template WebMedia
+quarto render artigo/preprint.qmd    # só o PDF no template de preprint
+quarto preview                       # escrita com recarga automática
+```
+
+O conteúdo fica em `artigo/sections/`, os metadados (título, autores,
+afiliações, resumo) em `artigo/_metadata.yml` e os templates LaTeX em
+`_extensions/`. Consulte o `README.md` para os detalhes.

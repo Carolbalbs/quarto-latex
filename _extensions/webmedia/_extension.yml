@@ -1,0 +1,24 @@
+title: WebMedia
+author: quarto-latex
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    pdf:
+      pdf-engine: pdflatex
+      # Preserva o .tex intermediario: permite renderizar os dois formatos PDF
+      # na mesma passada de `quarto render` e ajuda a depurar o LaTeX gerado.
+      keep-tex: true
+      # Copia a classe LaTeX para o diretorio de renderizacao.
+      format-resources:
+        - webmedia.cls
+      template-partials:
+        - partials/doc-class.tex
+        - partials/title.tex
+        - partials/before-body.tex
+      # A classe webmedia (derivada de acmart) traz o proprio esquema de cores
+      # e conflita com o realce de sintaxe do Pandoc.
+      highlight-style: none
+      number-sections: true
+      colorlinks: true
+      link-citations: true

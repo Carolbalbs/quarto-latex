@@ -1,0 +1,31 @@
+%% Partial: bloco de titulo (preprint / classe `externalized`)
+%% A classe exige que titulo, autores, afiliacoes e resumo sejam declarados
+%% no preambulo -- o \maketitle vem depois, em before-body.tex.
+\title{$title$$if(subtitle)$ \\ \normalsize $subtitle$$endif$}
+
+$for(by-author)$
+\author[$for(by-author.affiliations)$$it.number$$sep$,$endfor$$if(by-author.attributes.equal-contributor)$,*$endif$$if(by-author.attributes.corresponding)$,\dag$endif$]{$by-author.name.literal$}
+$endfor$
+
+$for(by-affiliation)$
+\affiliation[$by-affiliation.number$]{$by-affiliation.name$}
+$endfor$
+
+$if(preprint.equal-contrib-note)$
+\contribution[*]{$preprint.equal-contrib-note$}
+$endif$
+$if(preprint.corresponding-note)$
+\contribution[\dag]{$preprint.corresponding-note$}
+$endif$
+$if(preprint.correspondence)$
+\checkdata[\faEnvelopeO\;$if(preprint.correspondence-label)$$preprint.correspondence-label$$else$Correspondence$endif$]{$for(preprint.correspondence)$\email{$it$}$sep$, $endfor$}
+$endif$
+$if(date)$
+\checkdata[\faCalendar\;$if(preprint.date-label)$$preprint.date-label$$else$Date$endif$]{$date$}
+$endif$
+
+%% \abstractlist e sempre necessario pela classe, mesmo vazio.
+\abstract{$if(abstract)$$abstract$$endif$$if(keywords)$
+
+\vskip 2mm
+\noindent\textbf{$if(keywords-title)$$keywords-title$$else$Keywords$endif$:} $for(keywords)$$keywords$$sep$, $endfor$$endif$}

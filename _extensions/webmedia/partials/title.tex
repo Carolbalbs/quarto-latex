@@ -1,0 +1,34 @@
+%% Partial: bloco de titulo (WebMedia / ACM sigconf)
+$for(by-author)$
+\author{$by-author.name.literal$}
+$if(by-author.email)$
+\email{$by-author.email$}
+$endif$
+$if(by-author.orcid)$
+\orcid{$by-author.orcid$}
+$endif$
+\affiliation{%
+$for(by-author.affiliations)$
+$if(it.department)$
+  \department{$it.department$}
+$endif$
+  \institution{$it.name$}
+$if(it.city)$
+  \city{$it.city$}
+$endif$
+$if(it.state)$
+  \state{$it.state$}
+$endif$
+$if(it.country)$
+  \country{$it.country$}
+$endif$
+$endfor$
+}
+$endfor$
+
+\renewcommand{\shortauthors}{$if(shortauthors)$$shortauthors$$else$$for(by-author)$$by-author.name.family$$sep$, $endfor$$endif$}
+
+\title{$title$}
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$

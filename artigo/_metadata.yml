@@ -1,0 +1,68 @@
+# ---------------------------------------------------------------------------
+# Metadados do artigo, compartilhados pelos tres arquivos de entrada
+# (index.qmd -> HTML, webmedia.qmd -> PDF WebMedia, preprint.qmd -> PDF preprint).
+# Edite SOMENTE este arquivo para mudar titulo, autores, resumo etc.
+# ---------------------------------------------------------------------------
+title: "Título do seu artigo"
+subtitle: "Subtítulo opcional"
+date: today
+lang: pt-BR
+keywords-title: "Palavras-chave"
+# shortauthors: "Sobrenome et al."   # cabeçalho do PDF WebMedia (padrão: sobrenomes)
+
+author:
+  - name: Primeiro Autor
+    email: primeiro.autor@exemplo.br
+    affiliations:
+      - ref: inst1
+    attributes:
+      corresponding: true
+  - name: Segundo Autor
+    email: segundo.autor@exemplo.br
+    affiliations:
+      - ref: inst2
+    attributes:
+      equal-contributor: true
+
+affiliations:
+  - id: inst1
+    name: Universidade Federal da Bahia
+    department: Instituto de Computação
+    city: Salvador
+    state: BA
+    country: Brasil
+  - id: inst2
+    name: Instituto de Pesquisa Exemplo
+    city: São Paulo
+    state: SP
+    country: Brasil
+
+abstract: |
+  Este é o resumo do artigo. Descreva em um parágrafo o problema tratado,
+  a abordagem adotada, os principais resultados obtidos e a conclusão.
+  O mesmo texto é usado pelos dois templates LaTeX e pela versão HTML.
+
+keywords: [palavra-chave um, palavra-chave dois, palavra-chave três]
+
+bibliography: referencias.bib
+
+# --- Metadados especificos do template WebMedia (ignorados pelos demais) ---
+webmedia:
+  abstract-title: "Resumo"
+  event: webmedia
+  acronym: "WebMedia'2026"
+  proceedings: "Proceedings of the Brazilian Symposium on Multimedia and the Web"
+  year: 2026
+  location: "Lavras/MG, Brazil"
+  issn: "2966-2753"
+
+# --- Metadados especificos do template de preprint ---
+preprint:
+  accent: "004098"
+  abstract-title: "Resumo"
+  twocolumn: false
+  correspondence: [primeiro.autor@exemplo.br]
+  correspondence-label: "Contato"
+  date-label: "Data"
+  equal-contrib-note: "Contribuição igual"
+  corresponding-note: "Autor correspondente"

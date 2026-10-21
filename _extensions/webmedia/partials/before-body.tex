@@ -1,0 +1,20 @@
+%% Partial: inicio do corpo (WebMedia / ACM sigconf)
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$if(keywords)$
+\keywords{$for(keywords)$$keywords$$sep$, $endfor$}
+$endif$
+
+\maketitle
+
+%% O sumario e inserido pelo proprio Quarto logo apos este partial
+%% (controle com `toc:` / `toc-depth:` nos metadados).
+
+$for(include-before)$
+$include-before$
+
+$endfor$

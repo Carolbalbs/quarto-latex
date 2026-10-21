@@ -1,0 +1,24 @@
+# Quarto
+/.quarto/
+**/*.quarto_ipynb
+
+# Site gerado (publicado pelo GitHub Actions a partir do build).
+# Se você preferir servir o Pages direto da pasta /docs do repositório,
+# remova a linha abaixo e versione o diretório.
+/docs/
+
+# .tex intermediário preservado por `keep-tex` nas extensões
+/artigo/*.tex
+
+# Auxiliares do LaTeX
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+.DS_Store

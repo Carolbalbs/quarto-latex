@@ -1,0 +1,100 @@
+%% Partial: classe do documento (template de preprint, classe `externalized`)
+%% Opcoes passadas ANTES de \documentclass para evitar "option clash" com os
+%% pacotes que a classe e o template do Quarto carregam em comum.
+\PassOptionsToPackage{bidi=default,$if(babel-lang)$main=$babel-lang$,$endif$english}{babel}
+\PassOptionsToPackage{most,skins,breakable}{tcolorbox}
+\PassOptionsToPackage{dvipsnames,svgnames,table}{xcolor}
+\PassOptionsToPackage{unicode}{hyperref}
+
+\documentclass[$if(fontsize)$$fontsize$$else$10pt$endif$$if(preprint.twocolumn)$,twocolumn$endif$$for(classoption)$,$classoption$$endfor$]{externalized}
+
+$if(preprint.accent)$
+%% Cor de destaque personalizada
+\definecolor{themebg}{HTML}{$preprint.accent$}
+\definecolor{themeaccent}{HTML}{$preprint.accent$}
+\renewcommand{\themeaccent}[1]{{\bfseries\color[HTML]{$preprint.accent$} #1}}
+\hypersetup{linkcolor=themeaccent, citecolor=themeaccent, urlcolor=themeaccent}
+$endif$
+
+%% A classe declara fallbacks vazios de icones quando `fontawesome` (v4) nao
+%% esta instalado; o Quarto carrega `fontawesome5` para os callouts, o que
+%% causa "control sequence already defined". Liberamos os nomes e carregamos
+%% a versao 5, mantendo o alias \faEnvelopeO usado pela classe.
+\makeatletter
+\@ifpackageloaded{fontawesome}{}{%
+  \let\faCalendar\@undefined
+  \let\faEnvelope\@undefined
+  \let\faEnvelopeO\@undefined
+  \let\faGithub\@undefined
+  \usepackage{fontawesome5}
+  \providecommand{\faEnvelopeO}{\faEnvelope}%
+}
+\makeatother
+
+%% A classe carrega natbib em modo author-year, enquanto o citeproc (que ja
+%% formata as citacoes) pede a natbib para forcar o modo numerico -- o que
+%% dispara "Bibliography not compatible with author-year citations".
+%% Como as citacoes ja vem prontas do citeproc, neutralizamos o forcamento.
+\makeatletter
+\let\NAT@force@numbers\relax
+\makeatother
+
+$if(preprint.abstract-title)$
+%% Titulo da caixa de resumo (a classe usa "Abstract" por padrao)
+\renewcommand{\beginabstract}{\abstractfont{\sffamily\bfseries \themeaccent{$preprint.abstract-title$}\par}}
+$endif$
+
+%% ---------------------------------------------------------------------------
+%% Compatibilidade citeproc x natbib
+%% A classe carrega natbib; o citeproc (padrao do Quarto) ja entrega as
+%% citacoes formatadas e espera o \cite/\bibitem do LaTeX puro. Sem este
+%% ajuste as citacoes no texto saem vazias ou deformadas. Trocamos \citeproc
+%% por um simples hyperlink e \bibitem por \item + alvo de link.
+%% (As macros sao definidas fora do \AtBeginDocument porque `#` nao pode ser
+%% usado dentro do hook.)
+%% ---------------------------------------------------------------------------
+\makeatletter
+\NewDocumentCommand\qcsl@citeproc{mm}{\hyperlink{#1}{#2}}
+\newcommand\qcsl@bibitem[2][]{\item\hypertarget{#2}{}}
+\AtBeginDocument{%
+  \let\citeproc\qcsl@citeproc
+  \let\bibitem\qcsl@bibitem}
+\makeatother
+
+%% O Quarto carrega `lmodern` depois da classe, o que sobrescreve a fonte
+%% sem serifa (Helvetica) usada no bloco de titulo, cabecalhos e legendas.
+%% Restauramos a escolha da classe no inicio do documento.
+\AtBeginDocument{\renewcommand{\sfdefault}{phv}}
+
+%% Compatibilidade com o preambulo gerado pelo Pandoc
+\providecommand{\textasciicaret}{\^{}}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% Tabelas em Markdown viram `longtable`, que nao e permitido em layout de
+%% duas colunas. Aqui cada longtable e embrulhada em um float de coluna
+%% simples -- assim tabelas Markdown funcionam sem nenhum ajuste no texto.
+%% As macros sao definidas no preambulo (onde `#1` e valido) e so a troca
+%% acontece em \AtBeginDocument, porque (a) o pacote longtable e carregado
+%% depois deste partial e (b) a classe so entra em modo duas colunas depois
+%% de \begin{document} -- por isso o teste fica no momento do uso.
+\makeatletter
+\newif\ifqlt@wrapped
+\def\qlt@open{%
+  \if@twocolumn
+    \qlt@wrappedtrue
+    \begin{table}\@twocolumnfalse\begin{minipage}{\columnwidth}%
+  \else
+    \qlt@wrappedfalse
+  \fi}
+\def\qlt@close{\ifqlt@wrapped\end{minipage}\end{table}\fi}
+\def\qlt@i[#1]{\qlt@open\qlt@old[#1]}
+\def\qlt@ii{\qlt@open\qlt@old}
+\def\qlt@longtable{\@ifnextchar[\qlt@i\qlt@ii}
+\def\qlt@endlongtable{\endqlt@old\qlt@close}
+\AtBeginDocument{%
+  \let\qlt@old\longtable
+  \let\endqlt@old\endlongtable
+  \let\longtable\qlt@longtable
+  \let\endlongtable\qlt@endlongtable}
+\makeatother

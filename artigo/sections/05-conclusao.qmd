@@ -1,0 +1,8 @@
+# Conclusão {#sec-conclusao}
+
+Retome as contribuições apresentadas na @sec-introducao, discuta as limitações
+do estudo e aponte direções de trabalho futuro.
+
+## Agradecimentos {.unnumbered}
+
+Agradecimentos a pessoas e agências de fomento.

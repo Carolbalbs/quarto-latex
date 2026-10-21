@@ -1,0 +1,14 @@
+---
+# Versão HTML do artigo. Metadados em _metadata.yml; conteúdo em sections/.
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+::: {.callout-note appearance="simple"}
+Baixe este artigo em PDF: [template WebMedia](webmedia.pdf) ·
+[template preprint](preprint.pdf)
+:::
+
+{{< include _corpo.qmd >}}

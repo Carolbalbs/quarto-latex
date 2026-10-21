@@ -1,0 +1,17 @@
+# Metodologia {#sec-metodologia}
+
+Equações numeradas e referenciáveis usam a sintaxe `$$ ... $$ {#eq-rotulo}`:
+
+$$
+F_1 = 2 \cdot \frac{\text{precisão} \cdot \text{revocação}}{\text{precisão} + \text{revocação}}
+$$ {#eq-f1}
+
+A @eq-f1 define a métrica utilizada na avaliação. Equações em linha, como
+$\mathcal{O}(n \log n)$, também são suportadas.
+
+Blocos de código aparecem assim:
+
+```python
+def media(valores):
+    return sum(valores) / len(valores)
+```

@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - artigo/index.qmd
+    - artigo/webmedia.qmd
+    - artigo/preprint.qmd
+
+website:
+  title: "Artigo Científico em Quarto"
+  description: "Escreva em Markdown, publique em LaTeX e na web."
+  navbar:
+    left:
+      - href: index.qmd
+        text: Início
+      - href: artigo/index.qmd
+        text: Artigo
+  page-footer:
+    center: "Gerado com [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true

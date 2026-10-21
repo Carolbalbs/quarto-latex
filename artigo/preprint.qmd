@@ -1,0 +1,8 @@
+---
+# PDF no template de preprint (coluna única, classe `externalized`).
+# Metadados em _metadata.yml; conteúdo em sections/.
+# Renderize com: quarto render artigo/preprint.qmd
+format: preprint-pdf
+---
+
+{{< include _corpo.qmd >}}
