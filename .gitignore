@@ -7,8 +7,11 @@
 # remova a linha abaixo e versione o diretório.
 /docs/
 
-# .tex intermediário preservado por `keep-tex` nas extensões
+# .tex intermediário preservado por `keep-tex` e classes copiadas pelas
+# extensões (`format-resources`) durante o render
 /artigo/*.tex
+/artigo/*.cls
+/site_libs/
 
 # Auxiliares do LaTeX
 *.aux
